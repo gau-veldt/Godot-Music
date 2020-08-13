@@ -1,0 +1,107 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Visualization.gd" type="Script" id=2]
+
+[node name="GDMusic" type="Node"]
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Visualization" type="Node2D" parent="."]
+position = Vector2( 0, 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "Visualizer
+
+Displays a piano keyboard and highlights the played notes.
+"
+}
+
+[node name="Camera2D" type="Camera2D" parent="Visualization"]
+offset = Vector2( 285, 30 )
+current = true
+
+[node name="Channel 1" type="AudioStreamPlayer" parent="."]
+
+[node name="Channel 2" type="AudioStreamPlayer" parent="."]
+
+[node name="Channel 3" type="AudioStreamPlayer" parent="."]
+
+[node name="Channel 4" type="AudioStreamPlayer" parent="."]
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Music Player Object
+
+Though it is slightly tweaked for the pattern in Pachelbel's Canon in D
+it should be easy enough to change the script for generalized playback
+that does not have repeating tracks (eg: Canons)."
+}
+tB = "[
+	16D3 16A2 16B2 16F#2 16G2 16D2 16G2 16A2
+28]
+32D3"
+tM = "16F#5 16E5 16D5 16C#5 16B4 16A4 16B4 16C#5
+16D5 16C#5 16B4 16A4 16G4 16F#4 16G4 16E4
+8D4 8F#4 8A4 8G4 8F#4 8D4 8F#4 8E4
+8D4 8B3 8D4 8A4 8G4 8B4 8A4 8G4
+8F#4 8D4 8E4 8C#5 8D5 8F#5 8A5 8A4
+8B4 8G4 8A4 8F#4 8D4 8D5 [ 1E5 1D5 4] 2E5 2D5 4C#5
+4D5 4C#5 4D5 4D4 4C#4 4A4 4E4 4F#4 4D4 4D5 4C#5 4B5 4C#5 4F#5 4A5 4B5
+4G5 4F#5 4E5 4G5 4F#5 4E5 4D5 4C#5 4B4 4A4 4G4 4F#4 4E4 4G4 4F#4 4E4
+4D4 4E4 4F#4 4G4 4A4 4E4 4A4 4G4 4F#4 4B4 4A4 4G4 4A4 4G4 4F#4 4E4
+4D4 4B3 4B4 4C#5 4D5 4C#5 4B4 4A4 4G4 4F#4 4E4 4B4 4A4 4B4 4A4 4G4
+8F#4 8F#5 16E5 8R 8D5 16F#5
+16B5 16A5 16B5 16C#6
+8D6 8D5 16C#5 8R 8B4 16D5
+24D5 8D5 8D5 8G5 8E5 8A5
+4A5 2F#5 2G5 4A5 2F#5 2G5 2A5 2A4 2B4 2C#5 2D5 2E5 2F#5 2G5 4F#5 2D5 2E5 4F#5 2F#4 2G4 2A4 2B4 2A4 2G4 2A4 2F#4 2G4 2A4
+4G4 2B4 2A4 4G4 2F#4 2E4 2F#4 2E4 2D4 2E4 2F#4 2G4 2A4 2B4 4G4 2B4 2A4 4B4 2C#5 2D5 2A4 2B4 2C#5 2D5 2E5 2F#5 2G5 2A5
+4F#5 2D5 2E5 4F#5 2E5 2D5 2E5 2C#5 2D5 2E5 2F#5 2E5 2D5 2C#5 4D5 2B4 2C#5 4D5 2D4 2E4 2F#4 2G4 2F#4 2E4 2F#4 2D5 2C#5 2D5
+4B4 2D5 2C#5 4B4 2A4 2G4 2A4 2G4 2F#4 2G4 2A4 2B4 2C#5 2D5 4B4 2D5 2C#5 4D5 2C#5 2B4 2C#5 2D5 2E5 2D5 2C#5 2D5 2B4 2C#5
+8D5 8R 8C#5 8R 8B4 8R 8D5 8R
+8D4 8R 8D4 8R 8D4 8R 8E4 8R
+8R 8A4 8R 8A4 8R 8F#4 8R 8A4
+8R 8G4 8R 8F#4 8R 8G4 8R 8E5
+4F#5 4F#4 4G4 4F#4 4E4 4E5 4F#5 4E5 4D5 4F#4 4D4 4B4 4A4 4A3 4G3 4A3
+4B3 4B4 4C#5 4B4 4A4 4A3 4G3 4A3 4B3 4B4 4A4 4B4 4C#5 4C#4 4B3 4C#4
+4D4 4D5 4E5 4D5 4C#5 4C#4 4D4 4C#4 4B3 4B4 4A4 4B4 4C#5 4C#4 4F#4 4E4
+4D4 4D5 4E5 4G5 4F#5 4F#4 4A4 4F#5 4D5 4G5 4F#5 4G5 4E5 4A4 4G4 4A4
+4F#4 4A4 4A4 4A4 4A4 4A4 4A4 4A4 4F#4 4F#4 4F#4 4F#4 4F#4 4F#4 4A4 4A4
+4G4 4G4 4G4 4D5 4D5 4D5 4D5 4D5 4D5 4D5 4B4 4B4 4A4 4A4 4E5 4C#5
+4A4 4F#5 4F#5 4F#5 4E5 4E5 4E5 4E5 4D5 4D5 4D5 4D5 4A5 4A5 4A5 4A5
+4B5 4B5 4B5 4B5 4A5 4A5 4A5 4A5 4B5 4B5 4B5 4B5 4C#6 4C#5 4C#5 4C#5
+4D5 2D4 2E4 4F#4 4D4 4C#4 2C#5 2D5 4E5 4C#5 4B4 2B3 2C#4 4D4 4B3 4C#4 2A4 2G4 4F#4 4E4
+4D4 2G4 2F#4 4E4 4G4 4F#4 2D4 2E4 4F#4 4A4 4G4 2B4 2A4 4G4 4F#4 4E4 2A4 2G4 4F#4 4E4
+4F#4 2D5 2C#5 4D4 4F#4 4A4 2A4 2B4 4C#5 4A4 4F#4 2D5 2E5 4F#5 4D5 4F#5 2F#5 2E5 4D5 4C#5
+4B4 2B4 2A4 4B4 4C#5 4D5 2F#5 2E5 4D5 4F#5 4G5 2D5 2C#5 4B4 4B4 4A4 4E4 4A4 4A4
+24A4 8A4 24D4 8A4
+16G4 16A4 8G4 8D4 [ 1E4 1D4 4] 2E4 2D4 4C#4
+8D4 8D5 16C#5 16B4 16A4
+12D4 4E4 16F#4 16B4 12E4 4E4
+12F#4 4F#5 4F#5 4G5 4F#5 4E5 12D5 4D5 4D5 4E5 4D5 4C#5
+16B4 16D5 4D5 4C5 4B4 4C5 12A4 4A4
+12A4 4A5 4A5 4B5 4A5 4G5 12F#5 4F#5 4F#5 4G5 4F#5 4E5
+4D5 4C5 4B4 4C5 12A4 4A4 8G4 8D5 12C#5 4C#5
+8D5 16D5 8C#5 8C#5 16B4 8A4
+8A4 16G4 8F#4 12F#4 4E4 16E4
+8F#4 16F#5 8E5 8D5 16D6 8C6
+16B5 8D6 8A5 16B5 16A5
+16A5 12A4 4G4 16F#4 12F#5 4E5
+24D5 8D5 16D5 16C#5"
+tV1 = "8D5 8D4 8C#4 8C#5 8B4 8B3 8A3 8A4
+8G4 8G5 8F#5 8F#4 8E4 8B4 8E4 8E5
+8F#5 8F#4 8E4 8E5 8D5 8D4 8C#4 8C#5
+8B4 8B5 8A5 8A4 12B4 4E5 8A4 8A4
+32A4"
+tV2 = "8D5 8D4 8C#4 8C#5 8B4 8B3 8A3 8A4
+8G4 8G5 8F#5 8F#4 8E4 8B4 8E4 8E5
+32F#5"
+tV3 = "32D5"
+SecPerWhole = 5.4
